@@ -6,7 +6,7 @@ module.exports = {
   API_KEY: 'f2b7fcc8d652ada78561628e6ff2b3e2',
 };
 
-
+/*
 {
   "genres": [
     {
@@ -87,3 +87,4 @@ module.exports = {
     }
   ]
 }
+*/

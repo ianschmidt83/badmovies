@@ -11,6 +11,17 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/search', function(req, res) {
+	/*
+	https://api.themoviedb.org/3/discover/movie?api_key= <insert API key>  
+	&language=en-US
+	&sort_by=vote_average.asc
+	&include_adult=false
+	&page=1
+	&primary_release_date.lte=2017
+	&vote_average.lte=3
+	&with_genres= <insert genre number here>
+	*/
+
     // get the search genre     
 
     // https://www.themoviedb.org/account/signup
@@ -23,11 +34,24 @@ app.get('/search', function(req, res) {
 });
 
 app.get('/genres', function(req, res) {
-    // make an axios request to get the list of official genres
-    
-    // use this endpoint, which will also require your API key: https://api.themoviedb.org/3/genre/movie/list
+// https://api.themoviedb.org/3/genre/movie/list?api_key=<<api_key>>&language=en-US
 
-    // send back
+/*
+"genres": [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
+    },
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+]
+*/
 });
 
 app.post('/save', function(req, res) {
