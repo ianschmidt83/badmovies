@@ -9,11 +9,9 @@ class Search extends React.Component {
             "id": 28,
             "name": "Action"
         },
-      ],
+      ]
     };
-
-    this.bobo = document.getElementById('genres')
-  } 
+  }
   getGenres() {
     axios.get('/genres') // No params needed.
          .then( (response) => {
@@ -45,27 +43,27 @@ class Search extends React.Component {
 
         {/* Make the select options dynamic from genres !!! */}
         {/* How can you tell which option has been selected from here? */}
-     
-        <select id="genres">
-          {
-            this.state.genres.map(function (genre, idx, ary) {
-              return(<option value={genre.id}>{genre.name}</option>)
-            })
-          }
-        </select>
-        <br/><br/>
+        <form>
+          <select id="genres">
+            {
+              this.state.genres.map(function (genre, idx, ary) {
+                return(<option value={genre.id}>{genre.name}</option>)
+              })
+            }
+          </select>
+          <br/><br/>
 
-        <button 
-          onClick={ () => {this.props.getMovies(
-            console.log(this.state.bobo)
-          )} }
-        >Search</button>
+          <button 
+            onClick={ (e) => {
+              e.preventDefault()
+              console.log(document.getElementById('genres').value)
+            } }
+          >Search</button>
+        </form>
 
       </div>
     );
   }
-
-
 }
 
 /*
