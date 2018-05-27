@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class Search extends React.Component {
   constructor(props) {
@@ -15,24 +16,18 @@ class Search extends React.Component {
   getGenres() {
     axios.get('/genres') // No params needed.
          .then( (response) => {
-           console.log(response);
-           // The response will contain a list of genres
-           // push the list into this.state.genres
-           /*
-           {
-            "id": 28,
-            "name": "Action"
-           },
-           {
-            "id": 12,
-            "name": "Adventure"
-           }, */
+           // console.log(response);
+           this.setState({
+             genres: response.data,
+           })
 
          }).catch( (err) => {
           console.log(err);
          })
-    //make an axios request in this component to get the list of genres from your endpoint GET GENRES
+  }
 
+  componentDidMount() {
+    this.getGenres();
   }
 
   render() {
@@ -43,7 +38,6 @@ class Search extends React.Component {
 
         {/* Make the select options dynamic from genres !!! */}
         {/* How can you tell which option has been selected from here? */}
-        <form>
           <select id="genres">
             {
               this.state.genres.map(function (genre, idx, ary) {
@@ -56,10 +50,9 @@ class Search extends React.Component {
           <button 
             onClick={ (e) => {
               e.preventDefault()
-              console.log(document.getElementById('genres').value)
+              this.props.getMovies(document.getElementById('genres').value)
             } }
           >Search</button>
-        </form>
 
       </div>
     );
