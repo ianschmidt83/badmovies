@@ -15,6 +15,7 @@ class App extends React.Component {
     };
     
     // you might have to do something important here!
+    // bind functions as appropriate
   }
 
   getMovies() {
