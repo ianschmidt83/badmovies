@@ -18,7 +18,7 @@ class Movies extends React.Component {
         {
           this.props.movies.map(function (movie, idx, ary) {
             return(
-              <li className="movie_item">
+              <li className="movie_item" onClick={() => this.props.saveMovie(movie)}>
               <img src={'http://image.tmdb.org/t/p/w185/' + movie.poster_path} />
               <div className="movie_description">
                 <h2>{movie.original_title}</h2>
@@ -35,7 +35,7 @@ class Movies extends React.Component {
               </div>
             </li>
             )
-          }) 
+          }, this) 
         }
       </ul>
     );
